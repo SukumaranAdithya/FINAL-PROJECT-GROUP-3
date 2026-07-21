@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TwoPaths Wellness — Workout Routines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F6F1E7; --paper:#FBF8F2; --ink:#23303A;
+    --japan:#3E6E71; --india:#E1912C; --vermilion:#B5423B;
+    --muted:#7A7266; --line:rgba(35,48,58,0.14);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--cream); color:var(--ink); font-family:'Noto Sans',sans-serif; line-height:1.6;}
+  h1,h2,h3{font-family:'Shippori Mincho', serif; margin:0 0 .4em;}
+  a{color:inherit; text-decoration:none;}
+
+  /* ---------- NAV ---------- */
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 6vw; background:var(--paper); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:50; flex-wrap:wrap; gap:10px;}
+  .brand{font-family:'Shippori Mincho', serif; font-size:1.3rem; display:flex; align-items:center; gap:10px;}
+  .brand .wheel{width:22px; height:22px; border-radius:50%; border:3px solid var(--india); border-top-color:var(--japan); display:inline-block; cursor:pointer;}
+  .brand .wheel:hover{animation:spin 1.6s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .nav ul{list-style:none; display:flex; gap:26px; margin:0; padding:0; flex-wrap:wrap;}
+  .nav a{font-size:.92rem; letter-spacing:.03em; padding:6px 2px; border-bottom:2px solid transparent; transition:border-color .25s ease, transform .25s ease;}
+  .nav a:hover{border-color:var(--vermilion); transform:translateY(-2px) scale(1.06);}
+  .nav a.active{border-color:var(--japan); color:var(--japan);}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:7vw 6vw 3vw; text-align:center; background:linear-gradient(180deg, rgba(62,110,113,.1), transparent);}
+  .hero .eyebrow{font-family:'JetBrains Mono',monospace; text-transform:uppercase; letter-spacing:.18em; font-size:.78rem; color:var(--japan); display:block; margin-bottom:14px;}
+  .hero h1{font-size:clamp(2rem,4.5vw,3.2rem);}
+  .hero p{max-width:60ch; margin:14px auto 0; color:var(--muted);}
+
+  section{padding:50px 6vw;}
+  .section-title{max-width:70ch; margin:0 auto 26px;}
+  .section-title h2{font-size:clamp(1.4rem,3vw,2rem);}
+  .section-title p{color:var(--muted);}
+
+  /* ---------- TABLE ---------- */
+  .table-wrap{overflow-x:auto; margin:0 auto; max-width:1050px; border:1px solid var(--line); border-radius:10px;}
+  table{border-collapse:collapse; width:100%; background:var(--paper); font-size:.95rem;}
+  caption{caption-side:top; text-align:left; font-family:'Shippori Mincho',serif; font-size:1.1rem; padding:14px 18px; border-bottom:1px solid var(--line);}
+  th,td{padding:14px 18px; text-align:left; border-bottom:1px solid var(--line);}
+  thead th{font-family:'JetBrains Mono',monospace; font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); background:rgba(62,110,113,.08);}
+  tbody tr{transition:transform .2s ease, background .2s ease; cursor:pointer;}
+  tbody tr:hover{background:rgba(62,110,113,.12); transform:scale(1.012);}
+  tbody tr:last-child td{border-bottom:none;}
+
+  /* ---------- VIDEO GRID ---------- */
+  .video-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px;
+    max-width:1100px; margin:0 auto;
+  }
+  .video-card{
+    background:var(--paper); border:1px solid var(--line); border-radius:14px; overflow:hidden;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .video-card:hover{transform:translateY(-5px); box-shadow:0 14px 30px rgba(35,48,58,.12);}
+  .video-wrap{position:relative; padding-bottom:56.25%; height:0; overflow:hidden;}
+  .video-wrap iframe{position:absolute; top:0; left:0; width:100%; height:100%; border:0;}
+  .video-info{padding:18px 20px;}
+  .video-info .tag{font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--india); text-transform:uppercase; letter-spacing:.08em;}
+  .video-info h3{font-size:1.15rem; margin:6px 0 8px;}
+  .video-info p{color:var(--muted); font-size:.88rem; margin:0;}
+
+  footer{text-align:center; padding:40px 6vw 60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--line); background:var(--paper);}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="brand"><span class="wheel"></span> TwoPaths Wellness</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="japan-food.html">Japan Food</a></li>
+    <li><a href="indian-food.html">Indian Food</a></li>
+    <li><a href="workouts.html" class="active">Workouts</a></li>
+    <li><a href="celebrity.html">Fit Icon</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <span class="eyebrow">व्यायाम · 運動 · Daily Movement</span>
+  <h1>Workout Routines</h1>
+  <p>A balanced mix of traditional practices and modern fitness — blending Surya Namaskar, bodyweight calisthenics, and active recovery routines for all fitness levels.</p>
+</div>
+
+<section>
+  <div class="section-title">
+    <h2>7-Day Weekly Training Schedule</h2>
+    <p>Designed to alternate intensity, allowing muscle recovery while keeping daily movement consistent.</p>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <caption>Weekly Workout Routine Breakdown</caption>
+      <thead>
+        <tr><th>Day</th><th>Workout Focus</th><th>Key Exercises</th><th>Duration</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Monday</td><td>Full Body Yoga &amp; Mobility</td><td>Sun Salutations (Surya Namaskar), Warrior Poses, Hip Openers</td><td>30–45 mins</td></tr>
+        <tr><td>Tuesday</td><td>Upper Body Calisthenics</td><td>Push-ups, Pull-ups, Pike Push-ups, Dips</td><td>40 mins</td></tr>
+        <tr><td>Wednesday</td><td>High-Intensity Cardio (HIIT)</td><td>Jumping Jacks, Mountain Climbers, Burpees, High Knees</td><td>20–25 mins</td></tr>
+        <tr><td>Thursday</td><td>Lower Body &amp; Core</td><td>Bodyweight Squats, Lunges, Glute Bridges, Planks</td><td>35 mins</td></tr>
+        <tr><td>Friday</td><td>Traditional Movement / Calisthenics</td><td>Rajio Taiso stretches, Light Shadow Boxing, Core Work</td><td>30 mins</td></tr>
+        <tr><td>Saturday</td><td>Active Recovery &amp; Flexibility</td><td>Deep Stretching, Foam Rolling, Walking</td><td>30 mins</td></tr>
+        <tr><td>Sunday</td><td>Rest Day</td><td>Full Body Relaxation &amp; Light Meditation</td><td>Rest</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>Follow-Along Workout Videos</h2>
+    <p>Watch and follow these guided workouts directly on the page.</p>
+  </div>
+  <div class="video-grid">
+
+    <!-- Video 1 -->
+    <div class="video-card">
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/v7AYKMP6rOE" title="Morning Yoga Workout" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="tag">Yoga &amp; Mobility</span>
+        <h3>20-Min Morning Yoga Flow</h3>
+        <p>A gentle full-body stretch routine based on traditional Sun Salutations to awaken your joints and improve flexibility.</p>
+      </div>
+    </div>
+
+    <!-- Video 2 -->
+    <div class="video-card">
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/cbKidQQVGdc" title="Full Body HIIT Workout" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="tag">Fat Burn / HIIT</span>
+        <h3>15-Min No-Equipment HIIT</h3>
+        <p>Fast-paced bodyweight cardio circuit to build endurance and burn calories without any gym gear required.</p>
+      </div>
+    </div>
+
+    <!-- Video 3 -->
+    <div class="video-card">
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/vc1E5CfRfos" title="Calisthenics Workout for Beginners" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <span class="tag">Bodyweight Strength</span>
+        <h3>Beginner Calisthenics Routine</h3>
+        <p>Learn core bodyweight strength movements like push-ups, squats, and planks with proper posture and control.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  TwoPaths Wellness — Workout Routines page. Consult a health professional before starting any new exercise routine.
+</footer>
+
+</body>
+</html>
