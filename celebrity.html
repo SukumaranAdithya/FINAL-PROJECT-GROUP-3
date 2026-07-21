@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TwoPaths Wellness — Fitness Icon Spotlight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F6F1E7; --paper:#FBF8F2; --ink:#23303A;
+    --japan:#3E6E71; --india:#E1912C; --vermilion:#B5423B;
+    --muted:#7A7266; --line:rgba(35,48,58,0.14);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--cream); color:var(--ink); font-family:'Noto Sans',sans-serif; line-height:1.6;}
+  h1,h2,h3{font-family:'Shippori Mincho', serif; margin:0 0 .4em;}
+  a{color:inherit; text-decoration:none;}
+
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 6vw; background:var(--paper); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:50; flex-wrap:wrap; gap:10px;}
+  .brand{font-family:'Shippori Mincho', serif; font-size:1.3rem; display:flex; align-items:center; gap:10px;}
+  .brand .wheel{width:22px; height:22px; border-radius:50%; border:3px solid var(--india); border-top-color:var(--japan); display:inline-block; cursor:pointer;}
+  .brand .wheel:hover{animation:spin 1.6s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .nav ul{list-style:none; display:flex; gap:26px; margin:0; padding:0; flex-wrap:wrap;}
+  .nav a{font-size:.92rem; letter-spacing:.03em; padding:6px 2px; border-bottom:2px solid transparent; transition:border-color .25s ease, transform .25s ease;}
+  .nav a:hover{border-color:var(--vermilion); transform:translateY(-2px) scale(1.06);}
+  .nav a.active{border-color:var(--vermilion); color:var(--vermilion);}
+
+  .hero{padding:7vw 6vw 3vw; text-align:center; background:linear-gradient(180deg, rgba(181,66,59,.08), transparent);}
+  .hero .eyebrow{font-family:'JetBrains Mono',monospace; text-transform:uppercase; letter-spacing:.18em; font-size:.78rem; color:var(--vermilion); display:block; margin-bottom:14px;}
+  .hero h1{font-size:clamp(2rem,4.5vw,3.2rem);}
+  .hero p{max-width:60ch; margin:14px auto 0; color:var(--muted);}
+
+  section{padding:50px 6vw;}
+  .section-title{max-width:70ch; margin:0 auto 26px;}
+  .section-title h2{font-size:clamp(1.4rem,3vw,2rem);}
+  .section-title p{color:var(--muted);}
+
+  /* Icon Profile Layout with Dedicated Image Card */
+  .profile-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px;
+    max-width:1050px; margin:0 auto; align-items:center;
+  }
+  .profile-card{
+    background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:30px;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .profile-card:hover{transform:translateY(-4px); box-shadow:0 12px 28px rgba(35,48,58,.1);}
+  .profile-tag{font-family:'JetBrains Mono',monospace; font-size:.75rem; color:var(--vermilion); text-transform:uppercase; letter-spacing:.08em;}
+  .profile-card h3{font-size:1.8rem; margin:8px 0 16px;}
+  .profile-card p{color:var(--muted); font-size:.95rem; margin-bottom:12px;}
+  
+  .actor-img{
+    width:100%; height:460px; object-fit:cover; border-radius:10px; border:1px solid var(--line); display:block;
+  }
+
+  /* Habit Grid */
+  .grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px;
+    max-width:1100px; margin:0 auto;
+  }
+  .card{
+    background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:26px 22px;
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .card:hover{
+    transform:scale(1.035) rotate(-0.5deg);
+    box-shadow:0 14px 30px rgba(35,48,58,.12);
+    border-color:var(--india);
+  }
+  .card .tag{font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--japan); text-transform:uppercase; letter-spacing:.08em;}
+  .card h3{margin:10px 0 8px; font-size:1.2rem;}
+  .card p{color:var(--muted); font-size:.9rem; margin:0;}
+
+  /* Table styling */
+  .table-wrap{overflow-x:auto; margin:0 auto; max-width:1050px; border:1px solid var(--line); border-radius:10px;}
+  table{border-collapse:collapse; width:100%; background:var(--paper); font-size:.95rem;}
+  caption{caption-side:top; text-align:left; font-family:'Shippori Mincho',serif; font-size:1.1rem; padding:14px 18px; border-bottom:1px solid var(--line);}
+  th,td{padding:14px 18px; text-align:left; border-bottom:1px solid var(--line);}
+  thead th{font-family:'JetBrains Mono',monospace; font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); background:rgba(181,66,59,.08);}
+  tbody tr{transition:transform .2s ease, background .2s ease; cursor:pointer;}
+  tbody tr:hover{background:rgba(181,66,59,.1); transform:scale(1.012);}
+  tbody tr:last-child td{border-bottom:none;}
+
+  footer{text-align:center; padding:40px 6vw 60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--line); background:var(--paper);}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="brand"><span class="wheel"></span> TwoPaths Wellness</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="japan-food.html">Japan Food</a></li>
+    <li><a href="indian-food.html">Indian Food</a></li>
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="celebrity.html" class="active">Fit Icon</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <span class="eyebrow">फिटनेस आइकन · South Indian Cinema</span>
+  <h1>Fitness Icon Spotlight: Tovino Thomas</h1>
+  <p>Known for his dramatic physical transformations in Malayalam cinema—from superhero agility in <em>Minnal Murali</em> to intense martial arts conditioning in <em>ARM</em>.</p>
+</div>
+
+<section>
+  <div class="profile-grid">
+    <div class="profile-card" style="padding:12px; text-align:center;">
+      <img src="https://www.behindwoods.com/malayalam-actor/tovino-thomas/tovino-thomas-stills-photos-pictures-17.jpg" alt="Tovino Thomas Solo Photo" class="actor-img">
+    </div>
+    <div class="profile-card">
+      <span class="profile-tag">Icon Overview</span>
+      <h3>Tovino Thomas</h3>
+      <p><strong>Known For:</strong> High-octane action roles, functional athletics, and extreme role-based body transformations.</p>
+      <p><strong>Core Discipline:</strong> A balanced hybrid of heavy strength training, combat sports (Kalaripayattu &amp; boxing), and strict clean eating.</p>
+      <p><strong>Philosophy:</strong> "Consistency over perfection — train for functional longevity and athletic agility, not just aesthetics."</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>4 Pillars of His Fitness Routine</h2>
+    <p>How the South Indian actor balances strength, mobility, and diet for movie roles.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <span class="tag">Pillar 01</span>
+      <h3>Compound Lifting</h3>
+      <p>Heavy deadlifts, squats, and overhead presses form the base of his strength workouts to maintain core muscle mass.</p>
+    </div>
+    <div class="card">
+      <span class="tag">Pillar 02</span>
+      <h3>Martial Arts &amp; Boxing</h3>
+      <p>Integrates traditional Kalaripayattu and shadow boxing for agility, coordination, and high-intensity cardio conditioning.</p>
+    </div>
+    <div class="card">
+      <span class="tag">Pillar 03</span>
+      <h3>Calisthenics &amp; Core</h3>
+      <p>Weighted pull-ups, ring dips, and targeted core workouts to build functional strength and body control.</p>
+    </div>
+    <div class="card">
+      <span class="tag">Pillar 04</span>
+      <h3>High-Protein Nutrition</h3>
+      <p>Focuses on clean Indian staple sources: chicken breast, fish, eggs, paneer, sprouts, and complex carbs like ragi and red rice.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>Sample Workout Split</h2>
+    <p>An overview of an actor-style weekly conditioning schedule.</p>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <caption>Tovino-inspired weekly training breakdown</caption>
+      <thead>
+        <tr><th>Day</th><th>Focus Area</th><th>Key Exercises</th><th>Intensity</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Monday</td><td>Chest &amp; Triceps</td><td>Bench press, incline dumbbell press, cable flyes, dips</td><td>High</td></tr>
+        <tr><td>Tuesday</td><td>Back &amp; Biceps</td><td>Deadlifts, weighted pull-ups, barbell rows, hammer curls</td><td>High</td></tr>
+        <tr><td>Wednesday</td><td>Combat &amp; Agility</td><td>Kalaripayattu drills, heavy bag boxing, core circuits</td><td>Moderate-High</td></tr>
+        <tr><td>Thursday</td><td>Legs &amp; Shoulders</td><td>Barbell squats, lunges, overhead press, lateral raises</td><td>High</td></tr>
+        <tr><td>Friday</td><td>Functional Calisthenics</td><td>Muscle-ups, ring workouts, bodyweight conditioning</td><td>Moderate</td></tr>
+        <tr><td>Saturday</td><td>Active Recovery / Swimming</td><td>Light swimming, mobility stretches, foam rolling</td><td>Low</td></tr>
+        <tr><td>Sunday</td><td>Rest &amp; Mobility</td><td>Full rest day, mental recovery, clean fueling</td><td>Rest</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  TwoPaths Wellness — Celebrity Fitness Spotlight. Routine details are based on public interviews and training insights, for educational inspiration only.
+</footer>
+
+</body>
+</html>

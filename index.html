@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TwoPaths Wellness — Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F6F1E7;
+    --paper:#FBF8F2;
+    --ink:#23303A;
+    --japan:#3E6E71;
+    --india:#E1912C;
+    --vermilion:#B5423B;
+    --muted:#7A7266;
+    --line: rgba(35,48,58,0.14);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Noto Sans', sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3{font-family:'Shippori Mincho', serif; margin:0 0 .4em;}
+  a{color:inherit; text-decoration:none;}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 6vw; background:var(--paper); border-bottom:1px solid var(--line);
+    position:sticky; top:0; z-index:50; flex-wrap:wrap; gap:10px;
+  }
+  .brand{font-family:'Shippori Mincho', serif; font-size:1.3rem; display:flex; align-items:center; gap:10px;}
+  .brand .wheel{
+    width:22px; height:22px; border-radius:50%;
+    border:3px solid var(--india); border-top-color:var(--japan);
+    display:inline-block; cursor:pointer;
+    transition:transform .3s ease;
+  }
+  .brand .wheel:hover{animation:spin 1.6s linear infinite;}
+  @keyframes spin{ to{ transform:rotate(360deg);} }
+  .nav ul{list-style:none; display:flex; gap:26px; margin:0; padding:0; flex-wrap:wrap;}
+  .nav a{
+    font-size:.92rem; letter-spacing:.03em; padding:6px 2px; border-bottom:2px solid transparent;
+    transition:border-color .25s ease, transform .25s ease; cursor:pointer;
+  }
+  .nav a:hover{border-color:var(--vermilion); transform:translateY(-2px) scale(1.06);}
+  .nav a.active{border-color:var(--japan); color:var(--japan);}
+
+  /* ---------- DIVIDER ---------- */
+  .divider{display:flex; align-items:center; justify-content:center; gap:10px; margin:50px 0;}
+  .divider .dots{display:flex; gap:6px;}
+  .divider .dots span{width:6px; height:6px; border-radius:50%; background:var(--india);}
+  .divider .dots span:nth-child(even){background:var(--japan);}
+  .divider .diamond{
+    width:14px; height:14px; background:var(--vermilion);
+    transform:rotate(45deg); flex-shrink:0;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:9vw 6vw 5vw; text-align:center;}
+  .hero .eyebrow{
+    font-family:'JetBrains Mono', monospace; text-transform:uppercase; letter-spacing:.18em;
+    font-size:.78rem; color:var(--japan); display:block; margin-bottom:14px;
+  }
+  .hero h1{font-size:clamp(2.1rem, 5vw, 3.6rem); max-width:16ch; margin-left:auto; margin-right:auto;}
+  .hero h1 em{font-style:normal; color:var(--vermilion);}
+  .hero p{max-width:60ch; margin:18px auto 0; color:var(--muted); font-size:1.05rem;}
+
+  section{padding:0 6vw;}
+  .section-title{max-width:70ch; margin:0 auto 30px;}
+  .section-title h2{font-size:clamp(1.5rem,3vw,2.1rem);}
+  .section-title p{color:var(--muted); max-width:60ch;}
+
+  /* ---------- TABLE ---------- */
+  .table-wrap{overflow-x:auto; margin:0 auto 10px; max-width:1000px; border:1px solid var(--line); border-radius:10px;}
+  table{border-collapse:collapse; width:100%; background:var(--paper); font-size:.95rem;}
+  caption{caption-side:top; text-align:left; font-family:'Shippori Mincho',serif; font-size:1.1rem; padding:14px 18px; border-bottom:1px solid var(--line);}
+  th,td{padding:14px 18px; text-align:left; border-bottom:1px solid var(--line);}
+  thead th{
+    font-family:'JetBrains Mono', monospace; font-size:.75rem; text-transform:uppercase; letter-spacing:.08em;
+    color:var(--muted); background:rgba(62,110,113,0.06);
+  }
+  tbody tr{transition:transform .2s ease, background .2s ease; cursor:pointer;}
+  tbody tr:hover{background:rgba(225,145,44,0.1); transform:scale(1.012);}
+  tbody tr:last-child td{border-bottom:none;}
+  td.jp{color:var(--japan); font-weight:600;}
+  td.in{color:var(--india); font-weight:600;}
+
+  /* ---------- CARDS GRID ---------- */
+  .grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px;
+    max-width:1100px; margin:0 auto 80px;
+  }
+  .card{
+    background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:20px;
+    cursor:pointer; transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .card:hover{
+    transform:scale(1.045) rotate(-1deg);
+    box-shadow:0 14px 30px rgba(35,48,58,.14);
+    border-color:var(--vermilion);
+  }
+  .card-img{
+    width:100%; height:140px; object-fit:cover; border-radius:8px; margin-bottom:14px;
+  }
+  .card .tag{font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--india); text-transform:uppercase; letter-spacing:.08em;}
+  .card h3{margin:10px 0 8px; font-size:1.25rem;}
+  .card p{color:var(--muted); font-size:.92rem; margin:0 0 14px;}
+  .card .go{font-size:.85rem; color:var(--japan); font-weight:600;}
+
+  footer{
+    text-align:center; padding:40px 6vw 60px; color:var(--muted); font-size:.85rem;
+    border-top:1px solid var(--line); background:var(--paper);
+  }
+  @media (max-width:640px){ .nav ul{gap:14px; font-size:.85rem;} }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="brand"><span class="wheel"></span> TwoPaths Wellness</div>
+  <ul>
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="japan-food.html">Japan Food</a></li>
+    <li><a href="indian-food.html">Indian Food</a></li>
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="celebrity.html">Fit Icon</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <span class="eyebrow">健康 · स्वास्थ्य · Two Cultures, One Goal</span>
+  <h1>Health lessons from <em>Japan</em> and <em>India</em>, side by side</h1>
+  <p>Two of the world's most food-and-movement-rich cultures approach wellbeing very differently — fermented umami versus layered spice, radio calisthenics versus sun salutations. This page pulls the common threads together before you dive into each topic.</p>
+</div>
+
+<div class="divider">
+  <span class="dots"><span></span><span></span><span></span></span>
+  <span class="diamond"></span>
+  <span class="dots"><span></span><span></span><span></span></span>
+</div>
+
+<section>
+  <div class="section-title">
+    <h2>Japan vs India: the everyday basics</h2>
+    <p>A quick side-by-side of how each culture traditionally approaches food and movement.</p>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <caption>Comparing wellness fundamentals</caption>
+      <thead>
+        <tr><th>Aspect</th><th>Japan</th><th>India</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Staple grain</td><td class="jp">Short-grain white or brown rice</td><td class="in">Rice, wheat roti/chapati (varies by region)</td></tr>
+        <tr><td>Signature ferment</td><td class="jp">Miso, natto, pickles (tsukemono)</td><td class="in">Curd/yogurt, idli & dosa batter</td></tr>
+        <tr><td>Flavor philosophy</td><td class="jp">Umami, minimal seasoning, dashi base</td><td class="in">Layered spices — turmeric, cumin, chili, coriander</td></tr>
+        <tr><td>Typical meal shape</td><td class="jp">Teishoku — small balanced dishes + soup</td><td class="in">Thali — grains, dal, vegetable, curd, pickle</td></tr>
+        <tr><td>Daily drink</td><td class="jp">Green tea / matcha</td><td class="in">Masala chai / herbal kadha</td></tr>
+        <tr><td>Traditional movement</td><td class="jp">Rajio taiso (radio calisthenics), walking, martial arts</td><td class="in">Yoga, Kalaripayattu, temple-run stair walking</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="divider">
+  <span class="dots"><span></span><span></span><span></span></span>
+  <span class="diamond"></span>
+  <span class="dots"><span></span><span></span><span></span></span>
+</div>
+
+<section>
+  <div class="section-title">
+    <h2>Explore the site</h2>
+    <p>Each topic has its own dedicated page — hover a card to see it move.</p>
+  </div>
+  <div class="grid">
+    <a class="card" href="C:\Users\HP EP1152TU\Desktop\Web Programming\FINAL PROJECT GROUP 3\japan.html">
+      <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcRzOZu-twj7PU84jAyANhawuoZjMNZiF3jnOMz25y3XbJWZT0-M-gM3sz-HUT5jNRRAu47mD7LMNSE-4FE" class="card-img" alt="Japanese Healthy Food">
+      <span class="tag">Page 02</span>
+      <h3>Japanese Healthy Food</h3>
+      <p>Bento staples, fermented foods, and the calorie table behind Japan's long life expectancy — plus gyms around Tokyo & Osaka on the map.</p>
+      <span class="go">Visit page →</span>
+    </a>
+    <a class="card" href="indian-food.html">
+      <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcRdJsy7UEnUpaeQaHFhc34odw58ixAq_kvYTaJs62bhGGrSjurQYGsDrW-7Dsp7lXucS_AhZ1gzhNurXb0" class="card-img" alt="Indian Healthy Food">
+      <span class="tag">Page 03</span>
+      <h3>Indian Healthy Food</h3>
+      <p>Idli, khichdi, ragi dosa and more — regional dishes that balance spice with nutrition, plus top Indian gyms on the map.</p>
+      <span class="go">Visit page →</span>
+    </a>
+    <a class="card" href="workouts.html">
+      <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQeeuM70dIpre9ONGwDCJEb2zZtNwDi1MhVCGpwIdB0NqBKxSXCWFx_Zu7AS7HFL4ZPhb_x51JpV6cIYiQ" class="card-img" alt="Workout Routines">
+      <span class="tag">Page 04</span>
+      <h3>Workout Routines</h3>
+      <p>A 7-day sample routine plus real YouTube follow-along videos for yoga, HIIT and calisthenics.</p>
+      <span class="go">Visit page →</span>
+    </a>
+    <a class="card" href="celebrity.html">
+      <img src="https://www.behindwoods.com/malayalam-actor/tovino-thomas/tovino-thomas-stills-photos-pictures-17.jpg" class="card-img" alt="Tovino Thomas Fitness Icon">
+      <span class="tag">Page 05</span>
+      <h3>Fitness Icon Spotlight</h3>
+      <p>A look at South Indian actor Tovino Thomas known for a disciplined, healthy lifestyle and physical roles.</p>
+      <span class="go">Visit page →</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  TwoPaths Wellness — a student/demo project comparing everyday health habits in Japan &amp; India. Not medical advice.
+</footer>
+
+</body>
+</html>
